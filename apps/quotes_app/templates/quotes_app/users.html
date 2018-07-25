@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Users Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        .red {
+            color: red;
+            display: inline-block
+        }
+    </style>
+</head>
+<body>
+    <h1>User Dashboard for {{request.session.alias}}</h1>
+    <a href='/logout'>Log out</a>
+    <a href="/quotes">Quote Dashboard</a>
+    <h2>Quotes Posted by: {{created_by.alias}}</strong></h2>
+    <h3>Total Number of Quotes posted by {{created_by.alias}} : {{quotes.all.count}}</h3>
+    {% for quote in quotes %}
+        <div class="red">{{ quote.author }}</div> : {{ quote.quote_text }}
+        <br><br>
+    {% endfor %}
+
+</body>
+</html>
